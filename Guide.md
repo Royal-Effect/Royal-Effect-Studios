@@ -83,7 +83,7 @@ The client gets full content ownership via Sanity v3 — he can add projects, wr
   /styles        ← global CSS
   ```
 - Configure Tailwind v4 with brand tokens (colors, fonts, spacing)
-- Set up GSAP + Lenis sync in a `SmoothScrollProvider` component
+- Set up GSAP + Lenis sync in a `SamoothScrollProvider` component
 - Set up path aliases in `tsconfig.json` (`@/components`, `@/lib`, etc.)
 - Configure `.env.local` with Sanity project ID, dataset, Resend API key
 - Push to GitHub, connect to Vercel for auto-deploy
