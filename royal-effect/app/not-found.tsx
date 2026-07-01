@@ -76,7 +76,14 @@ export default function NotFound() {
 
           <p className="text-muted-foreground text-sm max-w-[42ch] leading-relaxed mb-10">
             The page you&apos;re looking for doesn&apos;t exist or has been
-            moved. Head back home and we&apos;ll get you sorted.
+            moved or 
+              <SquigglyText
+              stepDuration={60}
+              scale={[6, 9]}
+              className="text-[var(--green)] line-through"
+            >
+              deleted 
+            </SquigglyText>{" "}. Head back home and we&apos;ll get you sorted.
           </p>
 
           {/* Actions */}
