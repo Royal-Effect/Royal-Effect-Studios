@@ -9,6 +9,7 @@
 
 import Link from "next/link";
 import { Navbar } from "@/components/web/layouts/Navbar";
+import { SquigglyText } from "@/components/ui/squiggly-text";
 
 export default function NotFound() {
   return (
@@ -27,7 +28,7 @@ export default function NotFound() {
             z-0
           "
         >
-          {/* ROYAL */}
+          {/* ROYAL  EFFECT*/}
           <span
             className="font-vermin-vibes uppercase leading-none text-[var(--foreground)]"
             style={{
@@ -53,7 +54,13 @@ export default function NotFound() {
             }}
             aria-hidden="true"
           >
-            404
+            <SquigglyText
+              stepDuration={60}
+              scale={[6, 9]}
+              className="text-[var(--green)]"
+            >
+              404
+            </SquigglyText>{" "}
           </p>
 
           <h1
@@ -67,7 +74,7 @@ export default function NotFound() {
             Page Not Found
           </h1>
 
-          <p className="text-[var(--muted)] text-sm max-w-[42ch] leading-relaxed mb-10">
+          <p className="text-muted-foreground text-sm max-w-[42ch] leading-relaxed mb-10">
             The page you&apos;re looking for doesn&apos;t exist or has been
             moved. Head back home and we&apos;ll get you sorted.
           </p>

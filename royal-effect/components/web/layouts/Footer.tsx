@@ -78,7 +78,7 @@ export function Footer() {
         pt-16 pb-8 px-6 lg:px-10
       "
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="w-full max-w-[80rem] mx-auto">
         {/* Top row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
@@ -113,7 +113,7 @@ export function Footer() {
                 Royal Effect
               </span>
             </Link>
-            <p className="text-sm text-[var(--muted)] max-w-[26ch] leading-relaxed">
+            <p className="text-sm text-muted-foreground max-w-[26ch] leading-relaxed">
               Brand identity &amp; logo design studio. We build brands that mean
               business.
             </p>
@@ -129,7 +129,7 @@ export function Footer() {
                   className="
                     w-8 h-8 flex items-center justify-center
                     rounded border border-[var(--border)]
-                    text-[var(--muted)] hover:text-[var(--green)]
+                    text-muted-foreground hover:text-[var(--green)]
                     hover:border-[var(--green)]
                     transition-all duration-200
                   "
@@ -151,7 +151,7 @@ export function Footer() {
                   <Link
                     href={href}
                     className="
-                      text-sm text-[var(--muted)] hover:text-[var(--green)]
+                      text-sm text-muted-foreground hover:text-[var(--green)]
                       transition-colors duration-200
                     "
                   >
@@ -166,19 +166,19 @@ export function Footer() {
         </div>
 
         {/* Divider + copyright */}
-        <div
+        {/* <div
           data-fade-up
           className="
             border-t border-[var(--border)] pt-6
             flex flex-col sm:flex-row items-start sm:items-center justify-between
             gap-2
           "
-        >
+        > */}
           {/* <p className="text-xs text-[var(--muted-2)]">
             © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
           </p>
           <p className="text-xs text-[var(--muted-2)]">{COMPANY.tagline}</p> */}
-        </div>
+        {/* </div> */}
       </div>
     </footer>
   );

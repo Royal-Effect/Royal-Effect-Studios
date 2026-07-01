@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/web/ThemeToggle";
 import { NavLinks } from "@/libs/constants/navLinksData";
 import Image from "next/image";
@@ -11,6 +12,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
 
   /* Scroll detection */
   useEffect(() => {
@@ -91,16 +93,17 @@ export function Navbar() {
                 href={href}
                 label={label}
                 id={`nl-${label.toLowerCase()}`}
-                className="
+                className={`
                   font-vermin-vibes
-                  relative text-sm text-[var(--muted)]
-                  uppercase tracking-wide
+                  relative text-sm uppercase tracking-wide
+                  ${pathname === href ? "text-green" : "text-foreground"}
+                  transition-colors duration-200
                   after:absolute after:bottom-[-3px] after:left-0 after:right-0
                   after:h-[2px] after:bg-[var(--green)]
                   after:scale-x-0 after:origin-left
                   after:transition-transform after:duration-200
                   hover:after:scale-x-100
-                "
+                `}
             />
             ))}
           </nav>
@@ -116,27 +119,15 @@ export function Navbar() {
             <Link
               href="/contact"
               id="nav-cta"
-              className="
-                hidden lg:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold
-                bg-[var(--green)] text-white
-                rounded hover:bg-[var(--green-dark)]
-                transition-all duration-200
-                hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--green)]/25
-              "
+              className="group relative hidden lg:inline-flex items-center gap-2 px-2 py-4 text-sm font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300"
             >
               Start a Project
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-3.5 h-3.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
               </svg>
+              {/* Animated underline */}
+              <span className="absolute bottom-3 left-2 right-2 h-[1px] bg-foreground group-hover:bg-green group-hover:right-[-10px] transition-all duration-300 ease-out" />
             </Link>
 
             {/* Hamburger — mobile */}
@@ -197,7 +188,7 @@ export function Navbar() {
               className={`
                 font-vermin-vibes
                 text-[clamp(1.5rem,9vw,4.5rem)] leading-none uppercase
-                text-[var(--muted)]
+                ${pathname === href ? "text-green" : "text-foreground"}
                 border-b border-[var(--border)] py-4
                 block
                 transition-transform duration-200
@@ -218,10 +209,7 @@ export function Navbar() {
             href="/contact"
             onClick={closeMenu}
             className={`
-              mt-8 inline-flex items-center justify-center gap-2
-              px-6 py-4 text-base font-semibold
-              bg-[var(--green)] text-white rounded
-              hover:bg-[var(--green-dark)] transition-all duration-200
+              group relative mt-8 inline-flex items-center gap-2 px-2 py-4 text-base font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300
               ${
                 menuOpen
                   ? "opacity-100 translate-y-0"
@@ -230,7 +218,13 @@ export function Navbar() {
             `}
             style={{ transitionDelay: menuOpen ? "320ms" : "0ms" }}
           >
-            Start a Project →
+            Start a Project
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+            {/* Animated underline */}
+            <span className="absolute bottom-3 left-2 right-2 h-[1px] bg-foreground group-hover:bg-green group-hover:right-[-10px] transition-all duration-300 ease-out" />
           </Link>
         </nav>
 
@@ -244,7 +238,7 @@ export function Navbar() {
           `}
           style={{ transitionDelay: menuOpen ? "340ms" : "0ms" }}
         >
-          <span className="text-xs font-medium text-[var(--muted)] uppercase tracking-widest">
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest">
             Appearance
           </span>
           <ThemeToggle />
@@ -253,7 +247,7 @@ export function Navbar() {
         {/* Bottom meta */}
         <div
           className={`
-            px-8 py-8 text-xs text-[var(--muted)] border-t border-[var(--border)]
+            px-8 py-8 text-xs text-muted-foreground border-t border-[var(--border)]
             transition-all duration-300
             ${menuOpen ? "opacity-100" : "opacity-0"}
           `}
