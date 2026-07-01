@@ -43,7 +43,7 @@ export function HeroSection() {
           </span>
 
           {/* Headline — the single glitch accent lives here, nowhere else on the section */}
-          <h1 className="hero-anim font-vermin-vibes text-[clamp(3.5rem,11vw,11rem)] leading-[0.85] uppercase text-foreground mb-8">
+          <h1 className="hero-anim font-vermin-vibes text-[clamp(3.5rem,11vw,11rem)] leading-[0.85] uppercase text-foreground mb-8 leading-[.80]">
             Brands, Built
                        With{" "}
             <SquigglyText
@@ -56,7 +56,7 @@ export function HeroSection() {
           </h1>
 
           {/* Sub-headline — quiet, narrow measure, states the differentiator plainly */}
-          <p className="hero-anim text-muted-foreground text-base font-body sm:text-lg max-w-[50ch] mb-12 leading-relaxed font-medium">
+          <p className="hero-anim text-muted-foreground text-base font-body sm:text-lg max-w-[50ch] mb-12 leading-relaxed font-medium ">
             Designed by the person actually doing the work — start to
             finish, no hand-offs.
           </p>
