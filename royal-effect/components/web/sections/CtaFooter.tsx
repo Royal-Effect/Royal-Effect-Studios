@@ -40,9 +40,7 @@ export function CtaFooter() {
 
       <div className="w-full max-w-[80rem] mx-auto px-6 lg:px-10 relative z-10 flex flex-col items-center text-center">
         
-        <span className="cta-anim text-xs font-bold tracking-[0.3em] uppercase text-green mb-8 block">
-          Initiate Sequence
-        </span>
+      
 
         <h2 className="cta-anim font-vermin-vibes text-[clamp(4rem,15vw,15rem)] leading-[0.8] uppercase mb-12">
           Let's <br />
@@ -58,7 +56,7 @@ export function CtaFooter() {
           </span>
         </h2>
 
-        <p className="cta-anim text-muted-foreground text-lg sm:text-xl max-w-[40ch] mx-auto mb-16 font-medium">
+        <p className="cta-anim text-muted-foreground text-lg sm:text-xl max-w-[40ch] mt-8 mx-auto mb-16 font-medium">
           Ready to build a brand that commands attention and crushes the competition? 
         </p>
 
