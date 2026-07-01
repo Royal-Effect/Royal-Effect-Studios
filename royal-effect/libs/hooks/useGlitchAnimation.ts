@@ -53,7 +53,7 @@ export function useGlitchAnimation() {
 
     tlRef.current = gsap.timeline();
     tlRef.current.to(el, {
-      color:    "var(--muted)",
+      color:    "var(--foreground)",
       x:        0,
       duration: 0.28,
       ease:     "power2.out",

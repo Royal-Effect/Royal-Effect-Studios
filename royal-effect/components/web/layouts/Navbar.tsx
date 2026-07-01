@@ -96,13 +96,14 @@ export function Navbar() {
                 className={`
                   font-vermin-vibes
                   relative text-sm uppercase tracking-wide
-                  ${pathname === href ? "text-green" : "text-foreground"}
+                  ${pathname === href ? "text-green" : "text-green"}
                   transition-colors duration-200
                   after:absolute after:bottom-[-3px] after:left-0 after:right-0
                   after:h-[2px] after:bg-[var(--green)]
                   after:scale-x-0 after:origin-left
                   after:transition-transform after:duration-200
                   hover:after:scale-x-100
+                  hover:text-green-600
                 `}
             />
             ))}

@@ -1,3 +1,4 @@
+// Custom cursor component with orange branding
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -6,23 +7,21 @@ import { usePathname } from "next/navigation";
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname(); // Re-trigger effect if route changes to ensure body cursor state
+  const pathname = usePathname(); // Re‑trigger effect on route change
 
   useEffect(() => {
     if (!cursorRef.current) return;
-    
-    // Only apply on desktop where fine pointers exist
+
+    // Skip on touch‑devices (coarse pointer)
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    // Hide default cursor globally
+    // Hide the native cursor globally
     document.body.style.cursor = "none";
-    
-    // Hide cursor on interactive elements as well to ensure our custom cursor is the only one visible
+
+    // Ensure no other element shows a cursor
     const style = document.createElement("style");
     style.innerHTML = `
-      * {
-        cursor: none !important;
-      }
+      * { cursor: none !important; }
     `;
     document.head.appendChild(style);
 
@@ -32,29 +31,33 @@ export function CustomCursor() {
     const onMouseMove = (e: MouseEvent) => {
       xTo(e.clientX);
       yTo(e.clientY);
-      
-      // Use event delegation to detect interactive elements
+
       const target = e.target as HTMLElement;
-      const isInteractive = target.closest("a") || target.closest("button") || target.closest("input") || target.closest(".cursor-crosshair") || target.closest("[role='button']");
-      
+      const isInteractive =
+        target.closest("a") ||
+        target.closest("button") ||
+        target.closest("input") ||
+        target.closest(".cursor-crosshair") ||
+        target.closest("[role='button']");
+
       if (isInteractive) {
-         gsap.to(cursorRef.current, { 
-           scale: 3.5, 
-           backgroundColor: "transparent",
-           border: "1px solid var(--green)",
-           opacity: 1,
-           duration: 0.2, 
-           overwrite: "auto" 
-         });
+        gsap.to(cursorRef.current, {
+          scale: 3.5,
+          backgroundColor: "transparent",
+          border: "1px solid var(--green)",
+          opacity: 1,
+          duration: 0.2,
+          overwrite: "auto",
+        });
       } else {
-         gsap.to(cursorRef.current, { 
-           scale: 1, 
-           backgroundColor: "var(--green)",
-           border: "0px solid transparent",
-           opacity: 1, 
-           duration: 0.2, 
-           overwrite: "auto" 
-         });
+        gsap.to(cursorRef.current, {
+          scale: 1,
+          backgroundColor: "var(--green)",
+          border: "0px solid transparent",
+          opacity: 1,
+          duration: 0.2,
+          overwrite: "auto",
+        });
       }
     };
 
@@ -68,9 +71,9 @@ export function CustomCursor() {
   }, [pathname]);
 
   return (
-    <div 
-      ref={cursorRef} 
-      className="fixed top-0 left-0 w-3 h-3 rounded-full bg-green pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"
+    <div
+      ref={cursorRef}
+      className="fixed top-0 left-0 w-3 h-3 rounded-full bg-orange pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"
       style={{ willChange: "transform" }}
     />
   );
