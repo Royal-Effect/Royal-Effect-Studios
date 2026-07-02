@@ -41,11 +41,11 @@ export function SelectedWork() {
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
-          <h2 className="font-vermin-vibes text-[clamp(2.5rem,6vw,5rem)] leading-none uppercase text-foreground">
-            Selected <br />
+          <h2 className="font-vermin-vibes text-[clamp(3rem,6vw,5rem)] leading-none uppercase text-foreground">
+            Selected <br className="hidden md:block" />
             <span className="text-muted-foreground">Work</span>
           </h2>
-          <p className="text-sm font-bold tracking-widest uppercase text-muted-foreground max-w-xs md:text-right">
+          <p className="text-sm font-bold tracking-widest uppercase text-muted-foreground max-w-full md:text-right">
             We partner with <SquigglyText scale={[2, 3]} className="text-green inline-block">visionary founders</SquigglyText> to build category-defining brands.
           </p>
         </div>
