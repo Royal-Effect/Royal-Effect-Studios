@@ -40,7 +40,7 @@ export function WhatWeOffer() {
         {/* Header */}
         <div className="mb-20">
           <GlitchText className="text-sm font-bold tracking-widest uppercase text-green mb-6 inline-block">
-            // Core Competencies
+        
           </GlitchText>
           <h2 className="font-vermin-vibes text-[clamp(3rem,8vw,6rem)] leading-[0.85] uppercase text-foreground">
             What We <SquigglyText scale={[2, 3]} className="text-muted-foreground inline-block">Offer</SquigglyText>

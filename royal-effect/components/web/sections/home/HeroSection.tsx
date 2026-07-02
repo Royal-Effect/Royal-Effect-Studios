@@ -73,7 +73,7 @@ export function HeroSection() {
               href="https://wa.me/YOUR_NUMBER_HERE"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-2 py-4 text-sm font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300 flex items-center gap-2"
+              className="group relative px-2 py-4 text-md font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300 flex items-center gap-2"
             >
               Start a Project
               <svg
@@ -96,7 +96,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="/work"
-              className="group relative px-2 py-4 text-sm font-bold tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+              className="group relative px-2 py-4 text-md font-bold tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-2"
             >
               View Selected Work
               <svg
