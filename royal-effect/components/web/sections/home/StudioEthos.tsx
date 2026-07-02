@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GlitchText } from "@/components/web/GlitchText";
+import { GlitchText } from "@/components/web/utils/GlitchText";
 import { SquigglyText } from "@/components/ui/squiggly-text";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -59,7 +59,7 @@ export function StudioEthos() {
             </h2>
             <div className="w-12 h-[2px] bg-green mb-8" />
             <GlitchText className="text-sm font-bold tracking-[0.2em] uppercase text-foreground inline-block">
-              // Zero Compromise
+           
             </GlitchText>
           </div>
 

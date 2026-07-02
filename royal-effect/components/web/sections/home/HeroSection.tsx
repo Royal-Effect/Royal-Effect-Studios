@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
-import { GlitchText } from "@/components/web/GlitchText";
+import { GlitchText } from "@/components/web/utils/GlitchText";
 import { SquigglyText } from "@/components/ui/squiggly-text";
 
 export function HeroSection() {
@@ -18,14 +18,21 @@ export function HeroSection() {
     tl.fromTo(
       containerRef.current.querySelectorAll(".hero-anim"),
       { y: 24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out", delay: 0.15 }
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        delay: 0.15,
+      }
     );
   }, []);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-background border-b border-border"
+      className="relative min-h-dvh flex flex-col justify-center overflow-hidden bg-background border-b border-border"
     >
       {/* Structural Grid Lines (Neo-brutalism characteristic) */}
       <div className="absolute inset-0 pointer-events-none z-0 flex justify-between w-full max-w-[80rem] mx-auto px-6 lg:px-10 opacity-20">
@@ -44,8 +51,7 @@ export function HeroSection() {
 
           {/* Headline — the single glitch accent lives here, nowhere else on the section */}
           <h1 className="hero-anim font-vermin-vibes text-[clamp(3.5rem,11vw,11rem)] leading-[1] uppercase text-foreground mb-8 mt-4">
-            Brands, Built
-                       With{" "}
+            Brands, Built With{" "}
             <SquigglyText
               stepDuration={60}
               scale={[6, 9]}
@@ -57,8 +63,8 @@ export function HeroSection() {
 
           {/* Sub-headline — quiet, narrow measure, states the differentiator plainly */}
           <p className="hero-anim text-muted-foreground text-base font-body sm:text-lg max-w-[50ch] mb-12 leading-relaxed font-medium ">
-            Designed by the person actually doing the work — start to
-            finish, no hand-offs.
+            Designed by the person actually doing the work — start to finish, no
+            hand-offs.
           </p>
 
           {/* CTAs — Brutalist primary block, raw underlined link for secondary */}
@@ -70,7 +76,18 @@ export function HeroSection() {
               className="group relative px-2 py-4 text-sm font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300 flex items-center gap-2"
             >
               Start a Project
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -82,7 +99,18 @@ export function HeroSection() {
               className="group relative px-2 py-4 text-sm font-bold tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-2"
             >
               View Selected Work
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>

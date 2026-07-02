@@ -1,4 +1,3 @@
-
 // Custom cursor component with orange branding
 "use client";
 

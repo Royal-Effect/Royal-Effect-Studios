@@ -3,33 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GlitchText } from "@/components/web/GlitchText";
+import { GlitchText } from "@/components/web/utils/GlitchText";
 import { SquigglyText } from "@/components/ui/squiggly-text";
+import { whatWeOfferData } from "@/libs/constants/whatWeOfferData";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const SERVICES = [
-  {
-    id: "01",
-    title: "Brand Identity",
-    description: "Comprehensive visual systems including logos, typography, color palettes, and brand guidelines built to dominate your industry."
-  },
-  {
-    id: "02",
-    title: "Web Design",
-    description: "High-performance, Neo-Brutalist digital experiences that convert visitors into absolute fanatics."
-  },
-  {
-    id: "03",
-    title: "Strategy",
-    description: "Data-driven positioning, naming, and competitive analysis to ensure your brand doesn't just look good, but actually means business."
-  },
-  {
-    id: "04",
-    title: "Art Direction",
-    description: "Custom photography, 3D assets, and motion graphics that elevate your brand's perceived value out of the stratosphere."
-  }
-];
 
 export function WhatWeOffer() {
   const containerRef = useRef<HTMLElement>(null);
@@ -57,11 +35,11 @@ export function WhatWeOffer() {
 
   return (
     <section ref={containerRef} className="relative py-32 lg:py-48 bg-background border-b border-border overflow-hidden">
-      <div className="w-full max-w-[80rem] mx-auto px-6 lg:px-10 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         
         {/* Header */}
         <div className="mb-20">
-          <GlitchText className="text-sm font-bold tracking-[0.2em] uppercase text-green mb-6 inline-block">
+          <GlitchText className="text-sm font-bold tracking-widest uppercase text-green mb-6 inline-block">
             // Core Competencies
           </GlitchText>
           <h2 className="font-vermin-vibes text-[clamp(3rem,8vw,6rem)] leading-[0.85] uppercase text-foreground">
@@ -71,7 +49,7 @@ export function WhatWeOffer() {
 
         {/* Services List */}
         <div className="flex flex-col border-t border-border">
-          {SERVICES.map((service, idx) => (
+          {whatWeOfferData.map((service, idx) => (
             <div 
               key={service.id}
               className="service-row group relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 py-10 md:py-16 border-b border-border transition-colors duration-300 hover:bg-foreground/5 cursor-crosshair"

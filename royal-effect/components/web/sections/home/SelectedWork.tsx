@@ -5,29 +5,9 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SquigglyText } from "@/components/ui/squiggly-text";
+import { selectedWorkData } from "@/libs/constants/selectedWorkData";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const PROJECTS = [
-  {
-    id: 1,
-    client: "Apex Industries",
-    category: "Brand Identity",
-    color: "bg-surface-2",
-  },
-  {
-    id: 2,
-    client: "Neon Forge",
-    category: "Web Design & Strategy",
-    color: "bg-surface",
-  },
-  {
-    id: 3,
-    client: "Vanguard Edge",
-    category: "Logo Design",
-    color: "bg-surface-2",
-  },
-];
 
 export function SelectedWork() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +17,7 @@ export function SelectedWork() {
 
     const cards = containerRef.current.querySelectorAll(".work-card");
 
-    cards.forEach((card, i) => {
+    cards.forEach((card) => {
       gsap.fromTo(
         card,
         { y: 100, opacity: 0 },
@@ -57,7 +37,7 @@ export function SelectedWork() {
 
   return (
     <section ref={containerRef} className="relative py-32 bg-background border-b border-border">
-      <div className="w-full max-w-[80rem] mx-auto px-6 lg:px-10">
+      <div className="w-full max-w-7xl mx-auto px-6 lg:px-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
@@ -65,21 +45,21 @@ export function SelectedWork() {
             Selected <br />
             <span className="text-muted-foreground">Work</span>
           </h2>
-          <p className="text-sm font-bold tracking-[0.1em] uppercase text-muted-foreground max-w-xs md:text-right">
+          <p className="text-sm font-bold tracking-widest uppercase text-muted-foreground max-w-xs md:text-right">
             We partner with <SquigglyText scale={[2, 3]} className="text-green inline-block">visionary founders</SquigglyText> to build category-defining brands.
           </p>
         </div>
 
         {/* Project Grid */}
         <div className="flex flex-col gap-12 lg:gap-24">
-          {PROJECTS.map((project, idx) => (
+          {selectedWorkData.map((project) => (
             <Link
               key={project.id}
               href="/work"
               className="work-card group block relative w-full"
             >
               {/* Image Placeholder */}
-              <div className={`relative w-full aspect-[4/3] lg:aspect-[16/9] ${project.color} overflow-hidden border border-border`}>
+              <div className={`relative w-full aspect-4/3 lg:aspect-video ${project.color} overflow-hidden border border-border`}>
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                 
@@ -97,7 +77,7 @@ export function SelectedWork() {
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground uppercase tracking-wider mb-2">
                     {project.client}
                   </h3>
-                  <p className="text-sm text-muted-foreground font-semibold uppercase tracking-[0.1em]">
+                  <p className="text-sm text-muted-foreground font-semibold uppercase tracking-widest">
                     {project.category}
                   </p>
                 </div>

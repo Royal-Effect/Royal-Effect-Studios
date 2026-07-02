@@ -7,8 +7,8 @@ export const NavLinks: NavLinksInterface[] = [
   },
   {
     label: "Royal Effect",
-    href: "/about",
-  },
+    href: "/royaleffect",
+  }, 
   {
     label: "Work",
     href: "/work",

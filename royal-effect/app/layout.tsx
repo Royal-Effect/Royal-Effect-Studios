@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/components/web/theme-provider";
-import { Preloader } from "@/components/web/Preloader";
+import { ThemeProvider } from "@/components/web/utils/theme-provider";
+import { Preloader } from "@/components/web/utils/Preloader";
 import { SmoothScrollProvider } from "@/libs/utils/SmoothScrollProvider";
-import { CustomCursor } from "@/components/web/CustomCursor";
-import { cn } from "@/lib/utils";
+import { CustomCursor } from "@/components/web/utils/CustomCursor";
+import { cn } from "@/libs/utils/utils";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 

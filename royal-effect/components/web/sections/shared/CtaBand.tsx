@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function CtaBand() {
+export function CtaBand({ text,  }: { text: string }) {
   const bandRef = useRef<HTMLElement>(null);
 
   useEffect(() => {

@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "@/components/web/ThemeToggle";
+import { ThemeToggle } from "@/components/web/utils/ThemeToggle";
 import { NavLinks } from "@/libs/constants/navLinksData";
 import Image from "next/image";
-import { GlitchText } from "@/components/web/GlitchText";
+import { GlitchText } from "@/components/web/utils/GlitchText";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
