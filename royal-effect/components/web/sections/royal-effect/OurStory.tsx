@@ -162,7 +162,7 @@ const OurStory = () => {
           </h2>
           <p
             data-gsap
-            className="text-sm font-bold tracking-widest uppercase text-muted-foreground max-w-full md:text-right"
+            className="text-sm font-bold tracking-widest uppercase text-muted-foreground sm:max-w-full  md:max-w-xs md:text-right"
           >
             We build from the inside out, so the identity, strategy, and
             delivery all stay aligned.

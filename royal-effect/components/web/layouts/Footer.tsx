@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { NavLinks } from "@/libs/constants/navLinksData";
+import {GlitchText} from "@/components/web/utils/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,32 +86,12 @@ export function Footer() {
           <div data-fade-up className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3 group w-fit">
               <span
-                className="
-                w-10 h-10 rounded-full bg-[var(--green)]
-                flex items-center justify-center
-                group-hover:bg-[var(--green-dark)] transition-colors duration-200
-              "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 56 36"
-                  className="w-5 h-auto"
-                >
-                  <path
-                    fill="#fff"
-                    d="M5.99,23.97l8.99-8.99H5.99v17.98H0V8.99h23.97v5.99l-8.99,8.99,11.98,11.98v8.99L5.99,23.97Z"
-                  />
-                  <path
-                    fill="#fff"
-                    d="M32.00,14.98v-5.99h23.97v5.99h-23.97ZM32.00,23.97v-5.99h23.97v5.99h-23.97ZM32.00,32.96v-5.99h23.97v5.99h-23.97Z"
-                  />
-                </svg>
-              </span>
-              <span
                 className="text-lg uppercase text-[var(--foreground)]"
                 style={{ fontFamily: "var(--font-vermin-vibes)" }}
               >
-                Royal Effect
+                <GlitchText className="text-lg uppercase text-[var(--foreground)]">
+                  Royal Effect
+                </GlitchText>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-[26ch] leading-relaxed">
@@ -161,8 +142,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
-       
         </div>
 
         {/* Divider + copyright */}
@@ -174,7 +153,7 @@ export function Footer() {
             gap-2
           "
         > */}
-          {/* <p className="text-xs text-[var(--muted-2)]">
+        {/* <p className="text-xs text-[var(--muted-2)]">
             © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
           </p>
           <p className="text-xs text-[var(--muted-2)]">{COMPANY.tagline}</p> */}
