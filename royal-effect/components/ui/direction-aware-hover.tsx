@@ -7,12 +7,14 @@ import { cn } from "@/libs/utils/utils";
 
 export const DirectionAwareHover = ({
   imageUrl,
+  hoverImageUrl,
   children,
   childrenClassName,
   imageClassName,
   className,
 }: {
   imageUrl: string;
+  hoverImageUrl?: string;
   children: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
@@ -96,6 +98,18 @@ export const DirectionAwareHover = ({
               height="1000"
               src={imageUrl}
             />
+            {hoverImageUrl && (
+              <img
+                alt="hover image"
+                className={cn(
+                  "absolute inset-0 h-full w-full object-cover scale-[1.15] opacity-0 transition-opacity duration-500 group-hover/card:opacity-100",
+                  imageClassName
+                )}
+                width="1000"
+                height="1000"
+                src={hoverImageUrl}
+              />
+            )}
           </motion.div>
           <motion.div
             variants={textVariants}

@@ -8,10 +8,15 @@ import { FaqSection } from "@/components/web/sections/home/FaqSection";
 import CtaHero from "@/components/web/sections/home/CtaHero";
 // import { CtaFooter } from "@/components/web/sections/shared/CtaFooter";
 
-export const revalidate = 86400;
+import { client } from "@/sanity/lib/client";
+import { selectedWorksQuery } from "@/sanity/lib/queries";
+import { selectedWorkData } from "@/libs/constants/selectedWorkData";
+import { SelectedWorkInterface } from "@/libs/interfaces/selectedWork";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://royaleffectstudios.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://royal-effect-studios.vercel.app"),
   title: "Royal Effect Studios — Brand Identity & Logo Design",
   description:
     "Royal Effect is a premium brand identity and logo design studio. We build brands that mean business — strategic, modern, and built to make first impressions last.",
@@ -22,11 +27,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetch from Sanity API, fallback to static data if empty
+  const sanityWorks = await client.fetch<SelectedWorkInterface[]>(selectedWorksQuery);
+  const worksToDisplay = sanityWorks.length > 0 ? sanityWorks : selectedWorkData;
+
   return (
     <main>
       <HeroSection />
-      <SelectedWork />
+      <SelectedWork projects={worksToDisplay} />
       <ServicesMarquee />
       <StudioEthos />
       <WhatWeOffer />
