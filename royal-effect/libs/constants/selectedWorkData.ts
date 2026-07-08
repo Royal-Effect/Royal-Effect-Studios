@@ -33,13 +33,13 @@ export const selectedWorkData: SelectedWorkInterface[] = [
     ],
     gallery: [
       {
-        image: "/images/work-apex.svg" as unknown as import("@sanity/image-url/lib/types/types").SanityImageSource,
+        image: "/images/work-apex.svg" as unknown as import("@sanity/image-url").SanityImageSource,
         label: "Identity Board",
         alt: "Pastel identity board for Apex Industries",
         caption: "Primary brand sheet with the logo, palette, and type balance.",
       },
       {
-        image: "/images/work-apex.svg" as unknown as import("@sanity/image-url/lib/types/types").SanityImageSource,
+        image: "/images/work-apex.svg" as unknown as import("@sanity/image-url").SanityImageSource,
         label: "System Detail",
         alt: "Close-up brand system mockup for Apex Industries",
         caption: "A closer crop for logo, spacing, and signature applications.",
@@ -73,13 +73,13 @@ export const selectedWorkData: SelectedWorkInterface[] = [
     ],
     gallery: [
       {
-        image: "/images/work-neon.svg" as unknown as import("@sanity/image-url/lib/types/types").SanityImageSource,
+        image: "/images/work-neon.svg" as unknown as import("@sanity/image-url").SanityImageSource,
         label: "Product Story",
         alt: "Digital product layout for Neon Forge",
         caption: "A warm product landing layout built for fast scanning.",
       },
       {
-        image: "/images/work-neon.svg" as unknown as import("@sanity/image-url/lib/types/types").SanityImageSource,
+        image: "/images/work-neon.svg" as unknown as import("@sanity/image-url").SanityImageSource,
         label: "Interface Slice",
         alt: "UI composition for Neon Forge",
         caption: "A supporting crop showing the modular design system.",
@@ -113,13 +113,13 @@ export const selectedWorkData: SelectedWorkInterface[] = [
     ],
     gallery: [
       {
-        image: "/images/work-vanguard.svg" as unknown as import("@sanity/image-url/lib/types/types").SanityImageSource,
+        image: "/images/work-vanguard.svg" as unknown as import("@sanity/image-url").SanityImageSource,
         label: "Logo Reveal",
         alt: "Logo reveal presentation for Vanguard Edge",
         caption: "A clean reveal frame designed for decks and social posts.",
       },
       {
-        image: "/images/work-vanguard.svg" as unknown as import("@sanity/image-url/lib/types/types").SanityImageSource,
+        image: "/images/work-vanguard.svg" as unknown as import("@sanity/image-url").SanityImageSource,
         label: "Mark Application",
         alt: "Brand mark application for Vanguard Edge",
         caption: "A second frame that shows the symbol in a real-world layout.",
