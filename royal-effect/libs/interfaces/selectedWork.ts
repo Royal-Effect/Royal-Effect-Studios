@@ -39,7 +39,7 @@ interface SelectedWorkInterface {
   brandDesign?: string;
   searchTerms?: string[];
   brandColors: WorkColorSwatchInterface[];
-  displayImage: WorkAssetInterface;
+  displayImage?: WorkAssetInterface;
   hoverImage?: WorkAssetInterface;
   gallery: WorkAssetInterface[];
 }
