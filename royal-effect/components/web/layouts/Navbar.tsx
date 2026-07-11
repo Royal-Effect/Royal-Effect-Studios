@@ -7,14 +7,14 @@ import { ThemeToggle } from "@/components/web/utils/ThemeToggle";
 import { NavLinks } from "@/libs/constants/navLinksData";
 import Image from "next/image";
 import { GlitchText } from "@/components/web/utils/GlitchText";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
-  const { resolvedTheme } = useTheme();
+  // const { resolvedTheme } = useTheme();
 
   /* Scroll detection */
   useEffect(() => {
@@ -76,21 +76,31 @@ export function Navbar() {
             aria-label="Royal Effect Studios — Home"
             id="nav-logo"
           >
+            {/* Use dedicated CSS classes to control visibility based on HTML dark mode attribute to prevent hydration errors */}
             <Image
-              src={resolvedTheme === "dark" ? "/images/logo.svg" : "/images/Black-logo.svg"}
+              src="/images/logo.svg"
               alt="Royal Effect Studios"
               width={40}
               height={40}
+              className="logo-dark"
+              priority
+            />
+            <Image
+              src="/images/Black-logo.svg"
+              alt="Royal Effect Studios"
+              width={40}
+              height={40}
+              className="logo-light"
+              priority
             />
           </Link>
-
           {/* ── Desktop Nav Links ── */}
           <nav
             className="hidden lg:flex items-center gap-8"
             aria-label="Main navigation"
           >
             {NavLinks.map(({ label, href }) => (
-            <GlitchText
+              <GlitchText
                 key={href}
                 href={href}
                 label={label}
@@ -107,7 +117,7 @@ export function Navbar() {
                   hover:after:scale-x-100
                   hover:text-green-600
                 `}
-            />
+              />
             ))}
           </nav>
 
@@ -125,7 +135,18 @@ export function Navbar() {
               className="group relative hidden lg:inline-flex items-center gap-2 px-2 py-4 text-sm font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300"
             >
               Start a Project
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -146,17 +167,17 @@ export function Navbar() {
                 className={`block w-5 h-0.5 bg-foreground transition-all duration-200 origin-center ${
                   menuOpen ? "translate-y-1.75 rotate-45" : ""
                 }`}
-            />
+              />
               <span
                 className={`block w-5 h-0.5 bg-foreground transition-all duration-200 ${
                   menuOpen ? "opacity-0 scale-x-0" : ""
                 }`}
-            />
+              />
               <span
                 className={`block w-5 h-0.5 bg-foreground transition-all duration-200 origin-center ${
                   menuOpen ? "-translate-y-1.75 -rotate-45" : ""
                 }`}
-            />
+              />
             </button>
           </div>
         </div>
@@ -222,7 +243,18 @@ export function Navbar() {
             style={{ transitionDelay: menuOpen ? "320ms" : "0ms" }}
           >
             Start a Project
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
