@@ -36,7 +36,7 @@ export function WorkGallerySection({ projects }: { projects: SelectedWorkInterfa
         {/* Filters and Search */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
           <Tabs defaultValue="all" value={activeCategory} onValueChange={setActiveCategory} className="w-full md:w-auto">
-            <TabsList className="flex overflow-x-auto whitespace-nowrap gap-2 bg-transparent h-auto p-0 scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-w-[calc(100vw-3rem)] sm:max-w-full">
+            <TabsList className="flex flex-wrap gap-2 bg-transparent h-auto p-0">
               {categories.map(cat => (
                 <TabsTrigger 
                   key={cat} 
@@ -63,7 +63,7 @@ export function WorkGallerySection({ projects }: { projects: SelectedWorkInterfa
 
         {/* Grid */}
         {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 lg:gap-y-24">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-y-24 gap-5">
             {filteredProjects.map((project) => (
               <Link
                 key={project.id}

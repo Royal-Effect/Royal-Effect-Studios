@@ -6,12 +6,13 @@ import { StudioEthos } from "@/components/web/sections/home/StudioEthos";
 import { WhatWeOffer } from "@/components/web/sections/shared/WhatWeOffer";
 import { FaqSection } from "@/components/web/sections/home/FaqSection";
 import CtaHero from "@/components/web/sections/home/CtaHero";
-// import { CtaFooter } from "@/components/web/sections/shared/CtaFooter";
+import { BlogFeaturedPost } from "@/components/web/sections/blog/blogFeaturedPost";
 
 import { client } from "@/sanity/lib/client";
-import { selectedWorksQuery } from "@/sanity/lib/queries";
+import { selectedWorksQuery, blogPostsQuery } from "@/sanity/lib/queries";
 import { selectedWorkData } from "@/libs/constants/selectedWorkData";
 import { SelectedWorkInterface } from "@/libs/interfaces/selectedWork";
+import { BlogInterface } from "@/libs/interfaces/blog";
 
 export const revalidate = 60;
 
@@ -32,6 +33,10 @@ export default async function HomePage() {
   const sanityWorks = await client.fetch<SelectedWorkInterface[]>(selectedWorksQuery);
   const worksToDisplay = sanityWorks.length > 0 ? sanityWorks : selectedWorkData;
 
+  // Fetch latest blog post for featured section
+  const blogs = await client.fetch<BlogInterface[]>(blogPostsQuery);
+  const featuredPost = blogs.length > 0 ? blogs[0] : null;
+
   return (
     <main>
       <HeroSection />
@@ -40,8 +45,8 @@ export default async function HomePage() {
       <StudioEthos />
       <WhatWeOffer />
       <FaqSection />
+      {featuredPost && <BlogFeaturedPost post={featuredPost} />}
       <CtaHero />
- 
     </main>
   );
 }

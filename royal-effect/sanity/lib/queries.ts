@@ -102,3 +102,64 @@ export const singleWorkQuery = groq`
 export const workSlugsQuery = groq`
   *[_type == "selectedWork" && defined(slug.current)][].slug.current
 `;
+
+
+// BlogQuery
+
+export const blogPostsQuery = groq`
+  *[_type == "blog"] | order(publishedAt desc) {
+    _id,
+    "slug": slug.current,
+    title,
+    category->{
+      _id,
+      title
+    },
+    excerpt,
+    coverImage{
+      image,
+      label,
+      alt,
+      caption
+    },
+    publishedAt,
+    content
+  }
+`;
+
+export const singleBlogQuery = groq`
+  *[_type == "blog" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    title,
+    category->{
+      _id,
+      title
+    },
+    content,
+    excerpt,
+    coverImage{
+      image,
+      label,
+      alt,
+      caption
+    },
+    publishedAt
+  }
+`;
+
+export const blogSlugsQuery = groq`
+  *[_type == "blog" && defined(slug.current)][].slug.current
+`;
+
+// Adjacent blog posts for prev/next navigation
+export const adjacentBlogPostsQuery = groq`{
+  "prev": *[_type == "blog" && publishedAt > $publishedAt] | order(publishedAt asc)[0] {
+    "slug": slug.current,
+    title
+  },
+  "next": *[_type == "blog" && publishedAt < $publishedAt] | order(publishedAt desc)[0] {
+    "slug": slug.current,
+    title
+  }
+}`;
