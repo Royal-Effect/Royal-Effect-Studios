@@ -29,6 +29,7 @@ export function BlogFeaturedPost({ post }: { post: BlogInterface }) {
                 src={urlFor(post.coverImage.image).width(1200).url()}
                 alt={post.coverImage.alt || post.title}
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>

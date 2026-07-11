@@ -124,6 +124,7 @@ export function WorkCaseStudySection({ project }: { project: SelectedWorkInterfa
                   src={urlFor(project.displayImage.image).width(1200).url()}
                   alt={project.displayImage.alt ?? `${project.title} project preview`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover"
                   priority
                 />
@@ -262,6 +263,7 @@ export function WorkCaseStudySection({ project }: { project: SelectedWorkInterfa
                   src={urlFor(asset.image).width(800).url()}
                   alt={asset.alt}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover"
                 />
               </div>
