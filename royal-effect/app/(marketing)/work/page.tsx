@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { WorkIndexSection } from "@/components/web/sections/work/WorkIndexSection";
 import { WorkGallerySection } from "@/components/web/sections/work/WorkGallerySection";
+// import { WorkServicesSection } from "@/components/web/sections/work/WorkServicesSection";
+// import { WorkClientsSection } from "@/components/web/sections/work/WorkClientsSection";
+// import { WorkCTASection } from "@/components/web/sections/work/WorkCTASection";
 import { client } from "@/sanity/lib/client";
 import { selectedWorksQuery } from "@/sanity/lib/queries";
 import { selectedWorkData } from "@/libs/constants/selectedWorkData";
@@ -23,6 +26,9 @@ export default async function WorkPage() {
 		<main>
 			<WorkIndexSection />
 			<WorkGallerySection projects={worksToDisplay} />
+			{/* <WorkServicesSection /> */}
+			{/* <WorkClientsSection /> */}
+			{/* <WorkCTASection /> */}
 		</main>
 	);
 }

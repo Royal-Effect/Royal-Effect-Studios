@@ -9,8 +9,7 @@ import CtaHero from "@/components/web/sections/home/CtaHero";
 import { BlogFeaturedPost } from "@/components/web/sections/blog/blogFeaturedPost";
 
 import { client } from "@/sanity/lib/client";
-import { selectedWorksQuery, blogPostsQuery } from "@/sanity/lib/queries";
-import { selectedWorkData } from "@/libs/constants/selectedWorkData";
+import { featuredWorksQuery, blogPostsQuery } from "@/sanity/lib/queries";
 import { SelectedWorkInterface } from "@/libs/interfaces/selectedWork";
 import { BlogInterface } from "@/libs/interfaces/blog";
 
@@ -29,9 +28,8 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  // Fetch from Sanity API, fallback to static data if empty
-  const sanityWorks = await client.fetch<SelectedWorkInterface[]>(selectedWorksQuery);
-  const worksToDisplay = sanityWorks.length > 0 ? sanityWorks : selectedWorkData;
+  // Fetch featured works (max 5)
+  const worksToDisplay = await client.fetch<SelectedWorkInterface[]>(featuredWorksQuery);
 
   // Fetch latest blog post for featured section
   const blogs = await client.fetch<BlogInterface[]>(blogPostsQuery);

@@ -7,12 +7,14 @@ import { ThemeToggle } from "@/components/web/utils/ThemeToggle";
 import { NavLinks } from "@/libs/constants/navLinksData";
 import Image from "next/image";
 import { GlitchText } from "@/components/web/utils/GlitchText";
+import { useTheme } from "next-themes";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
 
   /* Scroll detection */
   useEffect(() => {
@@ -75,7 +77,7 @@ export function Navbar() {
             id="nav-logo"
           >
             <Image
-              src="/images/logo.svg"
+              src={resolvedTheme === "dark" ? "/images/logo.svg" : "/images/Black-logo.svg"}
               alt="Royal Effect Studios"
               width={40}
               height={40}

@@ -99,6 +99,13 @@ export const selectedWorkType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured on Homepage',
+      type: 'boolean',
+      description: 'Set to true to display this project on the homepage. Maximum 5 featured projects allowed.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'title',
       title: 'Project Title',
       type: 'string',

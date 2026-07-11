@@ -49,6 +49,34 @@ export const selectedWorksQuery = groq`
   }
 `;
 
+// Query to get featured works for homepage (max 5)
+export const featuredWorksQuery = groq`
+  *[_type == "selectedWork" && featured == true] | order(id asc)[0...5] {
+    id,
+    "slug": slug.current,
+    title,
+    client,
+    category->{
+      _id,
+      title
+    },
+    color,
+    summary,
+    displayImage{
+      image,
+      label,
+      alt,
+      caption
+    },
+    hoverImage{
+      image,
+      label,
+      alt,
+      caption
+    }
+  }
+`;
+
 // Query to get a single selected work by slug
 export const singleWorkQuery = groq`
   *[_type == "selectedWork" && slug.current == $slug][0] {
