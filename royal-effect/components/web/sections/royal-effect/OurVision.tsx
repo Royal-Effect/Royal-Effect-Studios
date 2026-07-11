@@ -88,7 +88,7 @@ export function OurVision() {
         </div>
 
         {/* Core value cards — flexed full width below */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 lg:items-start">
           {ourVisionCoreValuesData.map((value, index) => {
             const Icon = value.icon;
 
@@ -103,7 +103,9 @@ export function OurVision() {
                   ease: "easeOut",
                   delay: index * 0.08,
                 }}
-                className="flex-1 border border-border bg-foreground/5 p-6 sm:p-8 flex flex-col gap-6"
+                className={`flex-1 w-full border border-border bg-foreground/5 p-6 sm:p-8 flex flex-col gap-6 ${
+                  index === 1 ? "lg:mt-12" : index === 2 ? "lg:mt-24" : index === 3 ? "lg:mt-36" : ""
+                }`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background text-green">

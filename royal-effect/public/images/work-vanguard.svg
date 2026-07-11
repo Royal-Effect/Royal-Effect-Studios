@@ -1,0 +1,7 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F4E8E1"/>
+  <path d="M110 180C280 120 430 112 600 180C770 248 920 240 1090 180V350C920 410 770 418 600 350C430 282 280 290 110 350V180Z" fill="#EBC8B4"/>
+  <path d="M110 450C280 390 430 382 600 450C770 518 920 510 1090 450V620C920 680 770 688 600 620C430 552 280 560 110 620V450Z" fill="#D8D4CD"/>
+  <rect x="180" y="710" width="840" height="96" rx="22" fill="#3A475A"/>
+  <text x="210" y="772" fill="#F7F3EC" font-family="Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="6">VANGUARD EDGE</text>
+</svg>

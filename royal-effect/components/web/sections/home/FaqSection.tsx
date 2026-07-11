@@ -46,7 +46,7 @@ export function FaqSection() {
         {/* Left Column: Heading */}
         <div className="lg:col-span-5">
           <GlitchText className="text-sm font-bold tracking-[0.2em] uppercase text-green mb-6 inline-block">
-            // Intel
+       
           </GlitchText>
           <h2 className="font-vermin-vibes text-[clamp(3rem,6vw,5rem)] leading-[0.85] uppercase text-foreground mb-8">
             Frequently <br />

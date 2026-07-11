@@ -38,7 +38,7 @@ const TimelineCard = React.memo(function TimelineCard({
         <div className="w-full max-w-3xl bg-foreground/5 p-6 sm:p-8">
           <div className="flex items-start justify-between gap-4 mb-8">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange inline-flex items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-green inline-flex items-center gap-2">
                 <Icon className="h-4 w-4" aria-hidden="true" />
                 {step.year}
               </span>
@@ -155,14 +155,14 @@ const OurStory = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
           <h2
             data-gsap
-            className="font-vermin-vibes text-[clamp(2.5rem,6vw,5rem)] leading-none uppercase text-foreground"
+            className="font-vermin-vibes text-[clamp(3rem,6vw,5rem)] leading-none uppercase text-foreground"
           >
-            Our <br />
+            Our <br className="hidden md:block" />
             <span className="text-muted-foreground">Story</span>
           </h2>
           <p
             data-gsap
-            className="text-sm font-bold tracking-widest uppercase text-muted-foreground max-w-xs md:text-right"
+            className="text-sm font-bold tracking-widest uppercase text-muted-foreground sm:max-w-full  md:max-w-xs md:text-right"
           >
             We build from the inside out, so the identity, strategy, and
             delivery all stay aligned.

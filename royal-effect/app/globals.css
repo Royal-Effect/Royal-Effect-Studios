@@ -2,8 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
+@custom-variant dark (&:where(.dark, .dark *));
 /* ═══════════════════════════════════════════════════════
    ROYAL EFFECT — Design Token System
    Brand: Green #00A613 · Orange #F7941D · Black · White
@@ -269,3 +268,9 @@ video {
     @apply font-sans;
   }
 }
+
+/* ── LOGO VISIBILITY (HYDRATION SAFE) ────────────── */
+html.dark .logo-light { display: none !important; }
+html.dark .logo-dark { display: block !important; }
+html:not(.dark) .logo-light { display: block !important; }
+html:not(.dark) .logo-dark { display: none !important; }

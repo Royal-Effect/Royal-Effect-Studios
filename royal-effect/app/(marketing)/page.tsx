@@ -6,12 +6,17 @@ import { StudioEthos } from "@/components/web/sections/home/StudioEthos";
 import { WhatWeOffer } from "@/components/web/sections/shared/WhatWeOffer";
 import { FaqSection } from "@/components/web/sections/home/FaqSection";
 import CtaHero from "@/components/web/sections/home/CtaHero";
-// import { CtaFooter } from "@/components/web/sections/shared/CtaFooter";
+import { BlogFeaturedPost } from "@/components/web/sections/blog/blogFeaturedPost";
 
-export const revalidate = 86400;
+import { client } from "@/sanity/lib/client";
+import { featuredWorksQuery, blogPostsQuery } from "@/sanity/lib/queries";
+import { SelectedWorkInterface } from "@/libs/interfaces/selectedWork";
+import { BlogInterface } from "@/libs/interfaces/blog";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://royaleffectstudios.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://royal-effect-studios.vercel.app"),
   title: "Royal Effect Studios — Brand Identity & Logo Design",
   description:
     "Royal Effect is a premium brand identity and logo design studio. We build brands that mean business — strategic, modern, and built to make first impressions last.",
@@ -22,17 +27,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetch featured works (max 5)
+  const worksToDisplay = await client.fetch<SelectedWorkInterface[]>(featuredWorksQuery);
+
+  // Fetch latest blog post for featured section
+  const blogs = await client.fetch<BlogInterface[]>(blogPostsQuery);
+  const featuredPost = blogs.length > 0 ? blogs[0] : null;
+
   return (
     <main>
       <HeroSection />
-      <SelectedWork />
+      <SelectedWork projects={worksToDisplay} />
       <ServicesMarquee />
       <StudioEthos />
       <WhatWeOffer />
       <FaqSection />
+      {featuredPost && <BlogFeaturedPost post={featuredPost} />}
       <CtaHero />
- 
     </main>
   );
 }

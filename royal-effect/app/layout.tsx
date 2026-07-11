@@ -8,7 +8,7 @@ import { SmoothScrollProvider } from "@/libs/utils/SmoothScrollProvider";
 import { CustomCursor } from "@/components/web/utils/CustomCursor";
 import { cn } from "@/libs/utils/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const verminVibes = localFont({
   src: "../public/font/VerminVibes.woff",
@@ -22,6 +22,9 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+  ),
   title: "Royal Effect Studios",
   description: "Brand identity & logo design studio.",
 };
@@ -34,8 +37,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", verminVibes.variable, ibmPlexSans.variable, "font-sans", inter.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        verminVibes.variable,
+        ibmPlexSans.variable,
+        "font-sans",
+        inter.variable
+      )}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
     >
       <head>
         <title>Royal Effect Studios</title>

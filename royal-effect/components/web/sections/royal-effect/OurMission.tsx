@@ -75,7 +75,7 @@ export function OurMission() {
         aria-hidden="true"
       >
         <h2 className="font-vermin-vibes text-[20vw] leading-none text-foreground whitespace-nowrap">
-        ROYAL EFFECT
+        {/* ROYAL EFFECT */}
         </h2>
       </div>
 
