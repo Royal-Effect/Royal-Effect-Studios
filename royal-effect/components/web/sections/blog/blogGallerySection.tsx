@@ -44,11 +44,10 @@ export function BlogGallerySection({
   // Pagination
   const totalPosts = filteredBlogPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const paginatedPosts = filteredBlogPosts.slice(
-    startIndex,
-    startIndex + POSTS_PER_PAGE
-  );
+  const paginatedPosts = useMemo(() => {
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    return filteredBlogPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  }, [filteredBlogPosts, currentPage]);
 
   // Reset to page 1 when filters change
   const handleCategoryChange = (cat: string) => {

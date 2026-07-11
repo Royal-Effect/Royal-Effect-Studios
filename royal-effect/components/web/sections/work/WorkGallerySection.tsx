@@ -7,11 +7,14 @@ import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { urlFor } from "@/sanity/lib/image";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Search, ArrowRight } from "lucide-react";
+import { Search, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+const PROJECTS_PER_PAGE = 9;
 
 export function WorkGallerySection({ projects }: { projects: SelectedWorkInterface[] }) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const categories = useMemo(() => {
     const cats = projects.map(p => p.category?.title).filter(Boolean) as string[];
@@ -28,6 +31,25 @@ export function WorkGallerySection({ projects }: { projects: SelectedWorkInterfa
       return matchesCategory && matchesSearch;
     });
   }, [projects, activeCategory, searchQuery]);
+
+  // Pagination
+  const totalProjects = filteredProjects.length;
+  const totalPages = Math.ceil(totalProjects / PROJECTS_PER_PAGE);
+  const paginatedProjects = useMemo(() => {
+    const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
+    return filteredProjects.slice(startIndex, startIndex + PROJECTS_PER_PAGE);
+  }, [filteredProjects, currentPage]);
+
+  // Reset to page 1 when filters change
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+  };
   
   return (
     <section className="bg-background py-16 lg:py-24 border-b border-border">
@@ -35,7 +57,7 @@ export function WorkGallerySection({ projects }: { projects: SelectedWorkInterfa
         
         {/* Filters and Search */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
-          <Tabs defaultValue="all" value={activeCategory} onValueChange={setActiveCategory} className="w-full md:w-auto">
+          <Tabs defaultValue="all" value={activeCategory} onValueChange={handleCategoryChange} className="w-full md:w-auto">
             <TabsList className="flex flex-wrap gap-2 bg-transparent h-auto p-0">
               {categories.map(cat => (
                 <TabsTrigger 
@@ -55,16 +77,16 @@ export function WorkGallerySection({ projects }: { projects: SelectedWorkInterfa
               type="text" 
               placeholder="Search projects..." 
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               className="pl-12 py-6 text-[10px] font-bold uppercase tracking-[0.2em] border-border bg-background focus-visible:ring-1 focus-visible:ring-foreground rounded-none"
             />
           </div>
         </div>
 
         {/* Grid */}
-        {filteredProjects.length > 0 ? (
+        {paginatedProjects.length > 0 ? (
           <div className="grid md:grid-cols-3 grid-cols-1 gap-y-24 gap-5">
-            {filteredProjects.map((project) => (
+            {paginatedProjects.map((project) => (
               <Link
                 key={project.id}
                 href={`/work/${project.slug}`}
@@ -115,6 +137,48 @@ export function WorkGallerySection({ projects }: { projects: SelectedWorkInterfa
         ) : (
           <div className="py-24 flex items-center justify-center border border-border border-dashed">
             <p className="text-muted-foreground uppercase tracking-widest text-xs font-bold">No projects found matching your criteria.</p>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-16">
+            {/* Prev */}
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="p-3 border border-border text-muted-foreground hover:border-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            {/* Page numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+              (page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`w-10 h-10 text-[10px] font-bold uppercase tracking-[0.2em] border transition-all ${
+                    currentPage === page
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+                  }`}
+                >
+                  {page}
+                </button>
+              )
+            )}
+
+            {/* Next */}
+            <button
+              onClick={() =>
+                setCurrentPage((p) => Math.min(totalPages, p + 1))
+              }
+              disabled={currentPage === totalPages}
+              className="p-3 border border-border text-muted-foreground hover:border-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         )}
       </div>
