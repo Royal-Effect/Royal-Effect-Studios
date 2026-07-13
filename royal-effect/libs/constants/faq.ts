@@ -9,16 +9,46 @@ export const FAQS: FAQInterface[] = [
   {
     question: "How long does a typical project take?",
     answer:
-      "A standard brand identity and web design project takes anywhere from 4 to 8 weeks. We don't rush the process, because strategy takes time. We'll outline a clear, immovable timeline before we sign any contracts.",
-  },
-  {
-    question: "Do you offer web development as well?",
-    answer:
-      "Yes. We design and build high-performance, custom web experiences using modern frameworks like Next.js, React, and GSAP. We ensure the digital execution matches the strategic vision.",
+      "A standard brand identity project takes anywhere from 4 to 8 weeks. We don't rush the process, because strategy takes time. We'll outline a clear, immovable timeline before we sign any contracts.",
   },
   {
     question: "Why shouldn't I just use a cheaper agency?",
     answer:
       "If you're looking for cheap, we're not the right fit. Cheap agencies recycle templates and hand your work off to interns. We build bespoke, category-defining brands from scratch. You're paying for expertise, zero middle management, and undeniable results.",
+  },
+  {
+    question: "What industries do you work with?",
+    answer:
+      "We work with ambitious founders and businesses across industries, from hospitality and consumer products to tech and professional services. What matters more than your industry is your appetite for doing things properly.",
+  },
+  {
+    question: "Do you work with startups or only established brands?",
+    answer:
+      "Both. What we care about is conviction. If you're a startup that treats brand as an afterthought, this isn't for you. If you understand that brand is infrastructure, not decoration, we're a fit regardless of your stage.",
+  },
+  {
+    question: "What's included in a brand identity package?",
+    answer:
+      "Strategy, logo and visual system, typography, color, brand guidelines, and applied assets across the touchpoints your business actually needs. We scope every deliverable around what will move the needle for you, not a generic checklist.",
+  },
+  {
+    question: "Do you offer revisions?",
+    answer:
+      "Yes, a defined number of revision rounds are built into every engagement. We front-load strategy and discovery specifically to minimize back-and-forth later. Endless revisions are usually a symptom of skipped strategy, and we don't skip strategy.",
+  },
+  {
+    question: "Can you work with clients outside Nigeria?",
+    answer:
+      "Absolutely. We work with clients across time zones and have built processes specifically to make remote collaboration seamless, from async updates to scheduled calls that respect everyone's working hours.",
+  },
+  {
+    question: "What do you need from me to get started?",
+    answer:
+      "A clear sense of your business, your ambitions, and your willingness to trust the process. We'll handle the rest through a structured discovery phase before any design work begins.",
+  },
+  {
+    question: "Do you offer ongoing support after launch?",
+    answer:
+      "Yes. Brands need maintenance, not abandonment. We offer retainer options for continued design support and brand system upkeep as your business evolves.",
   },
 ];

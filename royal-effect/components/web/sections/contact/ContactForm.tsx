@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import emailjs from "@emailjs/browser";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -19,6 +20,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
@@ -38,24 +40,39 @@ export function ContactForm() {
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      // Standardize variables for typical EmailJS templates
+      const templateParams = {
+        user_name: data.name,
+        user_email: data.email,
+        subject: data.subject,
+        message: data.message,
+      };
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Missing EmailJS environment variables. Please check your .env.local file and restart the server.");
       }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        {
+          publicKey: publicKey,
+        }
+      );
 
       setSubmitStatus("success");
       reset(); 
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      setErrorMessage(error?.text || error?.message || "An unknown error occurred.");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -72,11 +89,12 @@ export function ContactForm() {
 
       {submitStatus === "error" && (
         <div className="mb-8 p-4 border border-destructive bg-destructive/10 text-destructive text-sm font-medium rounded-md">
-          Oops! Something went wrong. Please try again later or email us directly.
+          Oops! Something went wrong: <br/> <strong>{errorMessage}</strong>
         </div>
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+
         <div className="space-y-2">
           <label htmlFor="name" className="text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground">Name</label>
           <Input 
