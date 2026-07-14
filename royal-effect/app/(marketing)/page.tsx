@@ -17,7 +17,9 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://royal-effect-studios.vercel.app"),
-  title: "Royal Effect Studios — Brand Identity & Logo Design",
+  title: {
+    absolute: "Royal Effect Studios — Brand Identity & Logo Design Studio",
+  },
   description:
     "Royal Effect is a premium brand identity and logo design studio. We build brands that mean business — strategic, modern, and built to make first impressions last.",
   openGraph: {

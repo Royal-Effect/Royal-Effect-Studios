@@ -46,11 +46,29 @@ export function FaqSection({ faqs }: FaqSectionProps) {
     setOpenIdx(openIdx === idx ? null : idx);
   };
 
+  // Generate JSON-LD schema for FAQ
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <section
       ref={containerRef}
       className="relative py-32 lg:py-48 bg-background border-b border-border overflow-hidden"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="w-full max-w-[80rem] mx-auto px-6 lg:px-10 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         {/* Left Column: Heading */}
         <div className="lg:col-span-5">

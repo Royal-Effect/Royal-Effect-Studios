@@ -70,7 +70,7 @@ export function HeroSection() {
           {/* CTAs — Brutalist primary block, raw underlined link for secondary */}
           <div className="hero-anim flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-4">
             <Link
-              href="https://wa.me/YOUR_NUMBER_HERE"
+              href="https://wa.me/+2349066048991"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative px-2 py-4 text-md font-bold tracking-[0.1em] uppercase text-foreground transition-colors duration-300 flex items-center gap-2"

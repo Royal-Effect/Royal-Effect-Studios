@@ -29,15 +29,28 @@ export function ServicesMarquee() {
       />
 
       <div className="animate-marquee flex items-center">
-        {/* We double the list to make it infinitely loop */}
+        {/* Original list for screen readers and SEO */}
+        {servicesMarqueeData.map((service, idx) => (
+          <React.Fragment key={`orig-${idx}`}>
+            <span className="font-vermin-vibes text-4xl sm:text-6xl lg:text-7xl uppercase whitespace-nowrap px-8 select-none">
+              {service.text}
+            </span>
+            <span
+              className="text-green text-3xl sm:text-5xl font-bold select-none"
+              aria-hidden="true"
+            >
+              *
+            </span>
+          </React.Fragment>
+        ))}
+        {/* Duplicates hidden from screen readers to prevent repetition */}
         {[
           ...servicesMarqueeData,
           ...servicesMarqueeData,
           ...servicesMarqueeData,
-          ...servicesMarqueeData,
         ].map((service, idx) => (
-          <React.Fragment key={idx}>
-            <span className="font-vermin-vibes text-4xl sm:text-6xl lg:text-7xl uppercase whitespace-nowrap px-8 select-none">
+          <React.Fragment key={`dup-${idx}`}>
+            <span aria-hidden="true" className="font-vermin-vibes text-4xl sm:text-6xl lg:text-7xl uppercase whitespace-nowrap px-8 select-none">
               {service.text}
             </span>
             <span

@@ -98,11 +98,32 @@ export function Footer() {
     }
   }, []);
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Royal Effect Studios",
+    "image": "https://royal-effect-studios.vercel.app/images/Logo.svg",
+    "url": "https://royal-effect-studios.vercel.app",
+    "telephone": "+2349066048991",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lagos",
+      "addressCountry": "NG"
+    },
+    "sameAs": [
+      "https://www.instagram.com/royaleffect_/"
+    ]
+  };
+
   return (
     <footer
       ref={footerRef}
       className="relative flex flex-col w-full overflow-hidden bg-transparent"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       {/* ══════════════════════════════════════════════════════
           LAYER 1: Main Content & Navigation
       ══════════════════════════════════════════════════════ */}
