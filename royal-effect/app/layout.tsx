@@ -7,6 +7,7 @@ import { Preloader } from "@/components/web/utils/Preloader";
 import { SmoothScrollProvider } from "@/libs/utils/SmoothScrollProvider";
 import { CustomCursor } from "@/components/web/utils/CustomCursor";
 import { cn } from "@/libs/utils/utils";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -63,6 +64,7 @@ export default function RootLayout({
           <CustomCursor />
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-NE7C5Q1HHH" />
       </body>
     </html>
   );
