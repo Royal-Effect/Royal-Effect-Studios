@@ -9,7 +9,7 @@ import CtaHero from "@/components/web/sections/home/CtaHero";
 import { BlogFeaturedPost } from "@/components/web/sections/blog/blogFeaturedPost";
 
 import { client } from "@/sanity/lib/client";
-import { featuredWorksQuery, blogPostsQuery } from "@/sanity/lib/queries";
+import { featuredWorksQuery, blogPostsQuery, faqsQuery } from "@/sanity/lib/queries";
 import { SelectedWorkInterface } from "@/libs/interfaces/selectedWork";
 import { BlogInterface } from "@/libs/interfaces/blog";
 
@@ -35,6 +35,9 @@ export default async function HomePage() {
   const blogs = await client.fetch<BlogInterface[]>(blogPostsQuery);
   const featuredPost = blogs.length > 0 ? blogs[0] : null;
 
+  // Fetch FAQs from Sanity
+  const faqs = await client.fetch<{ _id: string; question: string; answer: string }[]>(faqsQuery);
+
   return (
     <main>
       <HeroSection />
@@ -42,7 +45,7 @@ export default async function HomePage() {
       <ServicesMarquee />
       <StudioEthos />
       <WhatWeOffer />
-      <FaqSection />
+      <FaqSection faqs={faqs} />
       {featuredPost && <BlogFeaturedPost post={featuredPost} />}
       <CtaHero />
     </main>

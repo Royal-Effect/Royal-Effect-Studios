@@ -5,11 +5,20 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GlitchText } from "@/components/web/utils/GlitchText";
 import { SquigglyText } from "@/components/ui/squiggly-text";
-import { FAQS } from "@/libs/constants/faq";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function FaqSection() {
+interface FAQ {
+  _id?: string;
+  question: string;
+  answer: string;
+}
+
+interface FaqSectionProps {
+  faqs: FAQ[];
+}
+
+export function FaqSection({ faqs }: FaqSectionProps) {
   const containerRef = useRef<HTMLElement>(null);
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
@@ -66,10 +75,10 @@ export function FaqSection() {
 
         {/* Right Column: Accordion */}
         <div className="lg:col-span-7 flex flex-col border-t border-border">
-          {FAQS.map((faq, idx) => {
+          {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={idx} className="faq-item border-b border-border">
+              <div key={faq._id ?? idx} className="faq-item border-b border-border">
                 <button
                   onClick={() => toggleFaq(idx)}
                   className="w-full flex items-center justify-between py-8 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green group"

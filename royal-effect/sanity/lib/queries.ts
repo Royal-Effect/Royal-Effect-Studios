@@ -190,3 +190,13 @@ export const adjacentBlogPostsQuery = groq`{
     title
   }
 }`;
+
+// FAQs — ordered by display order field
+export const faqsQuery = groq`
+  *[_type == "faq"] | order(order asc) {
+    _id,
+    order,
+    question,
+    answer
+  }
+`;
