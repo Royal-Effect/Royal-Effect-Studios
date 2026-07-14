@@ -8,6 +8,7 @@ import { SmoothScrollProvider } from "@/libs/utils/SmoothScrollProvider";
 import { CustomCursor } from "@/components/web/utils/CustomCursor";
 import { cn } from "@/libs/utils/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { CookieBanner } from "@/components/web/utils/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -52,6 +53,22 @@ export default function RootLayout({
       <head>
         <title>Royal Effect Studios</title>
         <link rel="icon" href="/images/Logo.svg" sizes="any" />
+        {/* GA Consent Mode v2 — all denied by default until user accepts */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                analytics_storage: 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
@@ -64,6 +81,7 @@ export default function RootLayout({
           <CustomCursor />
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </ThemeProvider>
+        <CookieBanner />
         <GoogleAnalytics gaId="G-NE7C5Q1HHH" />
       </body>
     </html>
