@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { NavLinks } from "@/libs/constants/navLinksData";
@@ -39,8 +40,18 @@ const WhatsAppIcon = () => (
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const layer2Ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  // Force GSAP ScrollTrigger to recalculate positions whenever the route changes.
+  // This fixes the issue where the parallax layer 2 is blank/laggy because it was using the old page's height.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   useEffect(() => {
     if (!footerRef.current) return;
