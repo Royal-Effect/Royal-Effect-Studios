@@ -5,9 +5,9 @@ import { Map, Marker } from "pigeon-maps";
 
 export function ContactInfo() {
   return (
-    <div className="w-full flex flex-col h-full">
+    <div className="w-full lg:max-w-xl md:mx-auto lg:mx-0 flex flex-col h-full">
       <div className="flex-1 w-full min-h-[400px] lg:min-h-[500px] bg-muted relative border border-border overflow-hidden rounded-none z-0">
-        <Map height="100%" defaultCenter={[6.5599557, 3.3512399]} defaultZoom={14}>
+        <Map defaultCenter={[6.5599557, 3.3512399]} defaultZoom={14}>
           <Marker width={45} anchor={[6.5599557, 3.3512399]} color="var(--green)" />
         </Map>
       </div>

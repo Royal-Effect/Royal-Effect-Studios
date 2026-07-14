@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import emailjs from "@emailjs/browser";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -43,36 +42,40 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
-      // Standardize variables for typical EmailJS templates
-      const templateParams = {
-        user_name: data.name,
-        user_email: data.email,
-        subject: data.subject,
-        message: data.message,
-      };
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("Missing EmailJS environment variables. Please check your .env.local file and restart the server.");
+      if (!accessKey) {
+        throw new Error("Missing Web3Forms Access Key. Please check your .env.local file.");
       }
 
-      await emailjs.send(
-        serviceId,
-        templateId,
-        templateParams,
-        {
-          publicKey: publicKey,
-        }
-      );
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+          replyto: data.email,
+          from_name: `${data.name} via Royal Effect Website`,
+        }),
+      });
 
-      setSubmitStatus("success");
-      reset(); 
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        reset();
+      } else {
+        throw new Error(result.message || "Failed to send message.");
+      }
     } catch (error: any) {
-      console.error("EmailJS Error:", error);
-      setErrorMessage(error?.text || error?.message || "An unknown error occurred.");
+      console.error("Contact form error:", error);
+      setErrorMessage(error?.message || "An unknown error occurred.");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -80,7 +83,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full lg:max-w-xl md:mx-auto lg:mx-0">
       {submitStatus === "success" && (
         <div className="mb-8 p-4 border border-[var(--green)] bg-[var(--green)]/10 text-[var(--green)] text-sm font-medium rounded-md">
           Thank you! Your message has been sent successfully. We'll be in touch soon.

@@ -150,8 +150,7 @@ export const blogPostsQuery = groq`
       alt,
       caption
     },
-    publishedAt,
-    content
+    publishedAt
   }
 `;
 
