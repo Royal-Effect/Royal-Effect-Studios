@@ -34,14 +34,14 @@ export function ContactInfo() {
             </h3>
             <div className="flex items-center gap-4 text-foreground mb-4">
               <Mail className="w-5 h-5 shrink-0 text-foreground opacity-50" />
-              <a href="mailto:hello@royaleffect.com" className="text-sm font-medium hover:text-[var(--green)] transition-colors uppercase tracking-widest text-muted-foreground">
-                hello@royaleffect.com
+              <a href="mailto:royaleffect22@gmail.com" className="text-sm font-medium hover:text-[var(--green)] transition-colors uppercase tracking-widest text-muted-foreground">
+                royaleffect22@gmail.com
               </a>
             </div>
             <div className="flex items-center gap-4 text-foreground">
               <Phone className="w-5 h-5 shrink-0 text-foreground opacity-50" />
-              <a href="tel:+2341234567890" className="text-sm font-medium hover:text-[var(--green)] transition-colors uppercase tracking-widest text-muted-foreground">
-                +234 (0) 123 456 7890
+              <a href="tel:+2349066048991" className="text-sm font-medium hover:text-[var(--green)] transition-colors uppercase tracking-widest text-muted-foreground">
+                +234 906 604 8991
               </a>
             </div>
           </div>

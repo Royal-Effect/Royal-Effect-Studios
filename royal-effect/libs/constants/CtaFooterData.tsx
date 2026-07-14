@@ -10,8 +10,8 @@ export const CtaHeroFooterData: CtaFooterProps = {
     href: "/contact",
   },
   secondaryLink: {
-    label: "hello@royaleffect.com",
-    href: "mailto:hello@royaleffect.com",
+    label: "royaleffect22@gmail.com",
+    href: "mailto:royaleffect22@gmail.com",
   },
 };
 
@@ -26,7 +26,7 @@ export const CtaAboutFooterData: CtaFooterProps = {
     href: "/work",
   },
   secondaryLink: {
-    label: "hello@royaleffect.com",
-    href: "mailto:hello@royaleffect.com",
+    label: "royaleffect22@gmail.com",
+    href: "mailto:royaleffect22@gmail.com",
   },
 };

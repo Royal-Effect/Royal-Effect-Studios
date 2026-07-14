@@ -17,8 +17,8 @@ const DEFAULT_PRIMARY: CtaFooterLink = {
 };
 
 const DEFAULT_SECONDARY: CtaFooterLink = {
-  label: "hello@royaleffect.com",
-  href: "mailto:hello@royaleffect.com",
+  label: "royaleffect22@gmail.com",
+  href: "mailto:royaleffect22@gmail.com",
 };
 
 export function CtaFooter({
