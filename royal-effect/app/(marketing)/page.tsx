@@ -35,8 +35,9 @@ export default async function HomePage() {
   const blogs = await client.fetch<BlogInterface[]>(blogPostsQuery);
   const featuredPost = blogs.length > 0 ? blogs[0] : null;
 
-  // Fetch FAQs from Sanity
-  const faqs = await client.fetch<{ _id: string; question: string; answer: string }[]>(faqsQuery);
+  // Fetch FAQs from Sanity, fallback to hardcoded if empty
+  const sanityFaqs = await client.fetch<{ _id: string; question: string; answer: string }[]>(faqsQuery);
+  const faqs = sanityFaqs.length > 0 ? sanityFaqs : (await import("@/libs/constants/faq")).FAQS;
 
   return (
     <main>

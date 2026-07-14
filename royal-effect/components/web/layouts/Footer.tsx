@@ -271,16 +271,24 @@ export function Footer() {
           BOTTOM BAR: Copyright + Privacy
       ══════════════════════════════════════════════════════ */}
       <div className="border-t border-[var(--border)] px-6 lg:px-10 py-4">
-        <div className="w-full max-w-[90rem] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="w-full max-w-[90rem] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[10px] text-muted-foreground uppercase tracking-[0.15em]">
             © {new Date().getFullYear()} Royal Effect Studios. All rights reserved.
           </p>
-          <Link
-            href="/privacy"
-            className="text-[10px] text-muted-foreground uppercase tracking-[0.15em] hover:text-foreground transition-colors duration-200"
-          >
-            Privacy Policy
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/faq"
+              className="text-[10px] text-muted-foreground uppercase tracking-[0.15em] hover:text-foreground transition-colors duration-200"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-[10px] text-muted-foreground uppercase tracking-[0.15em] hover:text-foreground transition-colors duration-200"
+            >
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
 
