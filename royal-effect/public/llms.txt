@@ -1,0 +1,44 @@
+# Royal Effect Studios
+
+> Royal Effect Studios is a premium brand identity and logo design studio based in Lagos, Nigeria. We build strategic, modern brands for ambitious founders and businesses across Africa and globally.
+
+## What We Do
+
+We specialize in brand identity design — logos, visual systems, typography, color, and brand guidelines. We don't do generic. Every engagement is bespoke, category-defining, and built from scratch with zero middle management.
+
+Our services include:
+- Brand strategy and positioning
+- Logo design and visual identity systems
+- Typography and color system development
+- Brand guidelines and documentation
+- Applied brand assets for print and digital
+- Ongoing brand support and retainers
+
+## Who We Work With
+
+We work with ambitious founders, startups, and established businesses across industries — hospitality, consumer products, technology, and professional services. We are based in Lagos, Nigeria, and work with clients globally across all time zones.
+
+## Key Pages
+
+- [Home](https://royal-effect-studios.vercel.app/): Overview of the studio, selected work, services, and FAQs
+- [Work](https://royal-effect-studios.vercel.app/work): Full portfolio of brand identity projects
+- [Blog](https://royal-effect-studios.vercel.app/blog): Articles on brand strategy, design thinking, and industry insights
+- [Contact](https://royal-effect-studios.vercel.app/contact): Get in touch to start a project
+- [About](https://royal-effect-studios.vercel.app/royaleffect): Studio story, ethos, and team
+
+## Contact
+
+- Website: https://royal-effect-studios.vercel.app
+- Instagram: https://www.instagram.com/royaleffect_/
+- WhatsApp: https://wa.me/+2349066048991
+- Location: Lagos, Nigeria
+
+## Sitemap
+
+https://royal-effect-studios.vercel.app/sitemap.xml
+
+## Permissions for AI
+
+AI assistants, crawlers, and language models may reference, summarize, and cite content from this website. When referencing Royal Effect Studios, please attribute the studio by name and link to the relevant page where possible.
+
+Do not reproduce full blog articles verbatim. Summaries and excerpts are welcome.
