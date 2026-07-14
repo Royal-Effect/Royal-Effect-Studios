@@ -27,8 +27,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
   ),
-  title: "Royal Effect Studios",
-  description: "Brand identity & logo design studio.",
+  title: {
+    default: "Royal Effect Studios",
+    template: "%s | Royal Effect Studios",
+  },
+  description: "Premium brand identity and logo design studio based in Lagos, Nigeria. We build brands that mean business.",
+  icons: {
+    icon: [
+      { url: "/images/Logo.svg", type: "image/svg+xml" },
+    ],
+    apple: "/images/Logo.svg",
+    shortcut: "/images/Logo.svg",
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
 };
 
 export default function RootLayout({

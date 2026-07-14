@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const CONSENT_KEY = "re_cookie_consent";
 
@@ -79,8 +80,12 @@ export function CookieBanner() {
             Cookie Notice
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-            We use cookies to understand how visitors interact with our site. This helps us improve your experience. You can accept or decline analytics tracking.
-          </p>
+              We use cookies to understand how visitors interact with our site. This helps us improve your experience. Read our{" "}
+              <Link href="/privacy" className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors">
+                Privacy Policy
+              </Link>
+              .
+            </p>
         </div>
 
         {/* Actions */}
