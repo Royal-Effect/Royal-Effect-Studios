@@ -57,11 +57,11 @@ export function WhatsAppCTA() {
   return (
     <a
       ref={containerRef}
-      href="https://wa.me/2348000000000"
+      href="https://wa.me/2349066048991"
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "fixed bottom-8 right-8 z-50 flex items-center justify-center border border-border bg-background text-foreground rounded-none shadow-xl  hover:text-background transition-colors duration-300 overflow-hidden",
+        "fixed bottom-8 right-8 z-50 flex items-center justify-center border border-border bg-background text-foreground rounded-none shadow-xl hover:bg-[var(--green)] hover:text-white hover:border-[var(--green)] transition-all duration-300 overflow-hidden",
         "px-6 py-4 gap-3 w-auto h-auto"
       )}
     >

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Navbar } from "@/components/web/layouts/Navbar";
 import { Footer } from "@/components/web/layouts/Footer";
 import { WhatsAppCTA } from "@/components/web/sections/shared/WhatsAppCTA";
+import { ScrollToTop } from "@/components/web/sections/shared/ScrollToTop";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -9,6 +10,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Navbar />
       <main className="flex-1 pt-16">{children}</main>
       <WhatsAppCTA />
+      <ScrollToTop />
       <Footer />
     </>
   );
